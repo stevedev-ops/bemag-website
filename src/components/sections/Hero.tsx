@@ -35,7 +35,7 @@ export function Hero() {
           </h1>
 
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed">
-            BEMAG Holding connects raw ideas to fully operational, customer-focused ventures. Built to scale, thrive, and lead in competitive markets.
+            BEMAG Holdings connects raw ideas to fully operational, customer-focused ventures. Built to scale, thrive, and lead in competitive markets.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">

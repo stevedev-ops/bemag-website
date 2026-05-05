@@ -291,7 +291,7 @@ export function Contact() {
 
             <div className="space-y-8">
               {[
-                { icon: Mail, label: "Email Us", value: "contact@bemagholding.com", color: "text-blue-600", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
+                { icon: Mail, label: "Email Us", value: "contact@bemagholdingsltd.com", color: "text-blue-600", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
                 { icon: Phone, label: "Call Us", value: "+254 700 000 000", color: "text-teal-600", bgColor: "bg-teal-100 dark:bg-teal-900/30" },
                 { icon: MapPin, label: "Location", value: "Nairobi, Kenya", color: "text-slate-900 dark:text-white", bgColor: "bg-slate-200 dark:bg-slate-800" }
               ].map((item, i) => (

@@ -10,7 +10,7 @@ const services = [
     id: "consultancy",
     title: "Business Consultancy",
     description: "Business registration, structuring, legal advisory, and strategic growth planning for your venture.",
-    longDescription: "BEMAG Holding provides end-to-end consultancy services designed to turn complex business ideas into profitable realities. We handle everything from the initial legal registration and tax structuring to long-term strategic planning and market positioning. Our goal is to provide a solid foundation upon which your business can scale sustainably.",
+    longDescription: "BEMAG Holdings provides end-to-end consultancy services designed to turn complex business ideas into profitable realities. We handle everything from the initial legal registration and tax structuring to long-term strategic planning and market positioning. Our goal is to provide a solid foundation upon which your business can scale sustainably.",
     icon: Briefcase,
     color: "bg-blue-600",
     features: [

@@ -19,7 +19,7 @@ export function Footer() {
                   BEMAG
                 </span>
                 <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-                  Holding
+                  Holdings
                 </span>
               </div>
             </Link>
@@ -70,7 +70,7 @@ export function Footer() {
 
         <div className="pt-12 border-t dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">
-            © {new Date().getFullYear()} BEMAG Holding. All Rights Reserved.
+            © {new Date().getFullYear()} BEMAG Holdings. All Rights Reserved.
           </p>
           <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">
             Nairobi, Kenya • Strategic Bridge to Success

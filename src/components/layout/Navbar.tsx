@@ -48,7 +48,7 @@ export function Navbar() {
               BEMAG
             </span>
             <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-              Holding
+              Holdings
             </span>
           </div>
         </Link>

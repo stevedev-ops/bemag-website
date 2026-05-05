@@ -8,8 +8,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BEMAG Holding | Your Strategic Bridge to Success",
-  description: "BEMAG Holding connects raw ideas to fully operational, customer-focused ventures. Built to scale, thrive, and lead in competitive markets.",
+  title: "BEMAG Holdings | Your Strategic Bridge to Success",
+  description: "BEMAG Holdings connects raw ideas to fully operational, customer-focused ventures. Built to scale, thrive, and lead in competitive markets.",
 };
 
 export default function RootLayout({
