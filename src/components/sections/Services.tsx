@@ -102,7 +102,7 @@ export function Services() {
             <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-sm">
               Our Expertise
             </p>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-tight">
               Comprehensive Solutions for <br />
               <span className="text-slate-400">Your Business Lifecycle</span>
             </h2>
@@ -181,7 +181,7 @@ export function Services() {
                   <selectedService.icon size={48} />
                 </div>
                 <div className="space-y-4">
-                  <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white">
+                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">
                     {selectedService.title}
                   </h2>
                   <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">

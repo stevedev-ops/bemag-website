@@ -41,7 +41,7 @@ export function CaseStudies() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
           <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-sm">Case Studies</p>
-          <h2 className="text-5xl lg:text-6xl font-black text-slate-900 dark:text-white">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white">
             Proven Results, <br />
             <span className="text-slate-400">Measured Success.</span>
           </h2>

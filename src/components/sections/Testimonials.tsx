@@ -65,7 +65,7 @@ export function Testimonials() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
           <p className="text-blue-400 font-black uppercase tracking-widest text-sm">Client Success</p>
-          <h2 className="text-5xl lg:text-6xl font-black text-white leading-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
             Trusted by Leaders <br />
             <span className="text-slate-500">Worldwide.</span>
           </h2>

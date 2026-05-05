@@ -280,7 +280,7 @@ export function Contact() {
           <div className="space-y-12">
             <div className="space-y-6">
               <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-sm">Get in Touch</p>
-              <h2 className="text-5xl font-black text-slate-900 dark:text-white leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
                 Let's Bridge the Gap <br />
                 <span className="text-slate-400">Together.</span>
               </h2>
@@ -313,7 +313,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-slate-900 rounded-[40px] md:rounded-[60px] p-8 md:p-12 shadow-2xl border border-slate-100 dark:border-slate-800 min-h-[500px]"
+            className="bg-white dark:bg-slate-900 rounded-3xl md:rounded-[60px] p-6 md:p-12 shadow-2xl border border-slate-100 dark:border-slate-800 min-h-[500px]"
           >
             <form onSubmit={handleSubmit} className="h-full flex flex-col justify-center">
               <AnimatePresence mode="wait">

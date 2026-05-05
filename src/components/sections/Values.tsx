@@ -76,7 +76,7 @@ export function Values() {
           <div className="lg:w-1/2 space-y-16">
             <div className="space-y-6">
               <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-sm">Our Values</p>
-              <h2 className="text-5xl font-black text-slate-900 dark:text-white leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
                 The Principles that <br />
                 <span className="text-slate-400">Define our Bridge</span>
               </h2>

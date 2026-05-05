@@ -27,7 +27,7 @@ export function Hero() {
             Your Strategic Partner
           </div>
 
-          <h1 className="text-6xl lg:text-8xl font-black leading-[1.1] text-slate-900 dark:text-white">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black leading-[1.1] text-slate-900 dark:text-white">
             The Bridge to <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">
               Your Success

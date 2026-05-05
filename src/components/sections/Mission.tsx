@@ -46,7 +46,7 @@ export function Mission() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-black uppercase tracking-widest">
                 Our Mission
               </div>
-              <h2 className="text-4xl lg:text-6xl font-black text-white leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-6xl font-black text-white leading-tight">
                 To connect businesses to <br />
                 <span className="text-blue-400 font-serif italic font-medium">limitless opportunities.</span>
               </h2>
@@ -70,21 +70,21 @@ export function Mission() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                <div className="space-y-6 pt-12 sm:pt-0">
                   <div className="bg-white/5 backdrop-blur-sm p-8 rounded-[40px] border border-white/10 hover:bg-white/10 transition-colors">
-                    <h3 className="text-5xl font-black text-white mb-2">100%</h3>
+                    <h3 className="text-4xl md:text-5xl font-black text-white mb-2">100%</h3>
                     <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Legal Compliance</p>
                   </div>
                   <div className="bg-blue-600 p-8 rounded-[40px] shadow-2xl shadow-blue-600/20">
-                    <h3 className="text-5xl font-black text-white mb-2">24/7</h3>
+                    <h3 className="text-4xl md:text-5xl font-black text-white mb-2">24/7</h3>
                     <p className="text-blue-100 font-bold uppercase tracking-widest text-xs">Expert Guidance</p>
                   </div>
                </div>
                <div className="space-y-6 pt-0 sm:pt-12">
                   <div className="bg-white p-8 rounded-[40px] shadow-2xl">
-                    <h3 className="text-5xl font-black text-slate-900 mb-2">8+</h3>
+                    <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-2">8+</h3>
                     <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Service Domains</p>
                   </div>
                   <div className="bg-white/5 backdrop-blur-sm p-8 rounded-[40px] border border-white/10 hover:bg-white/10 transition-colors">
-                    <h3 className="text-5xl font-black text-white mb-2">5k+</h3>
+                    <h3 className="text-4xl md:text-5xl font-black text-white mb-2">5k+</h3>
                     <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Documentations</p>
                   </div>
                </div>
