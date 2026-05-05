@@ -4,6 +4,7 @@ import { Services } from "@/components/sections/Services";
 import { Values } from "@/components/sections/Values";
 import { Mission } from "@/components/sections/Mission";
 import { CaseStudies } from "@/components/sections/CaseStudies";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollBridge } from "@/components/sections/ScrollBridge";
@@ -21,6 +22,7 @@ export default function Home() {
         <Process />
         <Mission />
         <CaseStudies />
+        <Testimonials />
         <Values />
         <FAQ />
         <Contact />

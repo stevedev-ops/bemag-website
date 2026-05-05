@@ -61,13 +61,13 @@ export function CaseStudies() {
                 <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-lg", project.color)}>
                   <project.icon size={28} />
                 </div>
-                <div className="px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                <div className="px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 group-hover:bg-slate-50 dark:group-hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 transition-colors">
                   {project.category}
                 </div>
               </div>
 
               <div className="flex-1 space-y-4">
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 transition-colors">
+                <h3 className="text-2xl font-black text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-slate-500 font-bold text-xs uppercase tracking-widest">{project.client}</p>
@@ -88,7 +88,7 @@ export function CaseStudies() {
                 </div>
               </div>
 
-              <button className="mt-10 w-full py-5 bg-slate-100 dark:bg-slate-800 rounded-3xl text-sm font-black text-slate-900 dark:text-white flex items-center justify-center gap-2 hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-slate-900 transition-all group/btn">
+              <button className="mt-10 w-full py-5 bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 rounded-3xl text-sm font-black text-slate-900 dark:text-white flex items-center justify-center gap-2 hover:!bg-slate-900 dark:hover:!bg-white hover:!text-white dark:hover:!text-slate-900 transition-all group/btn">
                 Read Full Story
                 <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
               </button>

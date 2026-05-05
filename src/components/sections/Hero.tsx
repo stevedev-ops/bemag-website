@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -78,37 +79,17 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           className="relative"
         >
-          {/* Abstract Bridge Visual */}
-          <div className="relative aspect-square w-full max-w-[600px] mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-teal-500/20 rounded-[80px] rotate-6 blur-2xl" />
+          {/* 3D Bridge Visual */}
+          <div className="relative aspect-square w-full max-w-[600px] mx-auto group">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-teal-500/30 rounded-[80px] rotate-6 blur-2xl group-hover:blur-3xl transition-all duration-700" />
             <div className="absolute inset-0 bg-white dark:bg-slate-900 rounded-[80px] shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden">
-               {/* Simplified Mockup Content */}
-               <div className="p-8 h-full flex flex-col gap-6">
-                 <div className="h-1/2 bg-slate-50 dark:bg-slate-950 rounded-[40px] p-6 flex flex-col gap-4">
-                    <div className="flex justify-between items-center">
-                      <div className="h-4 w-24 bg-slate-200 dark:bg-slate-800 rounded-full" />
-                      <div className="h-4 w-4 bg-teal-500 rounded-full" />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="h-8 w-full bg-slate-200 dark:bg-slate-800 rounded-xl" />
-                      <div className="h-8 w-2/3 bg-slate-200 dark:bg-slate-800 rounded-xl" />
-                    </div>
-                    <div className="mt-auto flex gap-2">
-                      <div className="h-10 flex-1 bg-blue-500/20 rounded-xl" />
-                      <div className="h-10 flex-1 bg-teal-500/20 rounded-xl" />
-                    </div>
-                 </div>
-                 <div className="grid grid-cols-2 gap-4 flex-1">
-                    <div className="bg-slate-50 dark:bg-slate-950 rounded-3xl p-4 flex flex-col justify-between">
-                      <div className="w-8 h-8 bg-blue-500/10 rounded-lg" />
-                      <div className="h-4 w-12 bg-slate-200 dark:bg-slate-800 rounded-full" />
-                    </div>
-                    <div className="bg-slate-50 dark:bg-slate-950 rounded-3xl p-4 flex flex-col justify-between">
-                      <div className="w-8 h-8 bg-teal-500/10 rounded-lg" />
-                      <div className="h-4 w-12 bg-slate-200 dark:bg-slate-800 rounded-full" />
-                    </div>
-                 </div>
-               </div>
+               <Image
+                 src="/hero-bridge.png"
+                 alt="BEMAG Bridge to Success"
+                 fill
+                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+                 priority
+               />
             </div>
           </div>
 
@@ -116,14 +97,14 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-6 -right-6 px-6 py-4 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 font-black text-blue-600"
+            className="absolute -top-6 -right-6 px-6 py-4 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 font-black text-blue-600 dark:text-blue-400"
           >
             Efficiency +45%
           </motion.div>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -bottom-6 -left-6 px-6 py-4 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 font-black text-teal-600"
+            className="absolute -bottom-6 -left-6 px-6 py-4 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 font-black text-teal-600 dark:text-teal-500"
           >
             Strategic Growth
           </motion.div>

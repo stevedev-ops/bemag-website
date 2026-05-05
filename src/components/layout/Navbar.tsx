@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { name: "Services", href: "#services" },
@@ -38,8 +40,8 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-slate-900 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-slate-900 shadow-xl transition-transform group-hover:scale-110">
-            <Globe className="w-6 h-6" />
+          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-xl transition-transform group-hover:scale-110 overflow-hidden">
+            <Image src="/bemag-logo.png" alt="BEMAG Logo" width={40} height={40} className="object-cover w-full h-full" />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
@@ -62,6 +64,7 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
+          <ThemeToggle />
           <Link
             href="#contact"
             className="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full text-sm font-bold shadow-xl shadow-slate-900/10 dark:shadow-white/10 hover:-translate-y-0.5 transition-all active:scale-95 flex items-center gap-2"
@@ -90,6 +93,10 @@ export function Navbar() {
             className="absolute top-full left-0 right-0 bg-white dark:bg-slate-900 shadow-2xl border-t dark:border-slate-800 p-6 md:hidden"
           >
             <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-black text-slate-500 uppercase tracking-widest">Appearance</span>
+                <ThemeToggle />
+              </div>
               {navLinks.map((link) => (
                 <Link
                   key={link.name}

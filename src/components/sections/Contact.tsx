@@ -1,15 +1,282 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Globe, Share2, ExternalLink, MessageSquare } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Send, Globe, Share2, ExternalLink, MessageSquare, Briefcase, Users, FileCheck, Plane, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const services = [
+  { id: "consultancy", label: "Business Consultancy", icon: Briefcase, color: "text-blue-500", bg: "bg-blue-100 dark:bg-blue-500/10", border: "border-blue-200 dark:border-blue-500/20" },
+  { id: "relations", label: "Customer Relations", icon: Users, color: "text-teal-500", bg: "bg-teal-100 dark:bg-teal-500/10", border: "border-teal-200 dark:border-teal-500/20" },
+  { id: "compliance", label: "Documentation & Compliance", icon: FileCheck, color: "text-slate-700 dark:text-slate-300", bg: "bg-slate-200 dark:bg-slate-700/30", border: "border-slate-300 dark:border-slate-600" },
+  { id: "visas", label: "Tours & Visas", icon: Plane, color: "text-orange-500", bg: "bg-orange-100 dark:bg-orange-500/10", border: "border-orange-200 dark:border-orange-500/20" }
+];
+
+const subQuestions = {
+  consultancy: [
+    { id: "new", label: "Starting a new business" },
+    { id: "scale", label: "Scaling an existing business" },
+    { id: "legal", label: "Legal advisory & restructuring" },
+    { id: "other", label: "Other / General Inquiry" }
+  ],
+  relations: [
+    { id: "training", label: "Staff training programs" },
+    { id: "retention", label: "Improving client retention" },
+    { id: "evaluation", label: "Service quality evaluation" },
+    { id: "other", label: "Other / General Inquiry" }
+  ],
+  compliance: [
+    { id: "tax", label: "Tax filing & compliance" },
+    { id: "audit", label: "Financial audit preparation" },
+    { id: "renewal", label: "Document & permit renewals" },
+    { id: "other", label: "Other / General Inquiry" }
+  ],
+  visas: [
+    { id: "corporate", label: "Corporate travel & logistics" },
+    { id: "personal", label: "Personal Schengen/Tour visa" },
+    { id: "work", label: "Work visa facilitation" },
+    { id: "other", label: "Other / General Inquiry" }
+  ]
+};
+
 export function Contact() {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    service: "",
+    subIntent: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: ""
+  });
+
+  useEffect(() => {
+    const handlePreselect = (e: any) => {
+      setFormData(prev => ({ ...prev, service: e.detail }));
+      setStep(2);
+    };
+    window.addEventListener('preselectService', handlePreselect);
+    return () => window.removeEventListener('preselectService', handlePreselect);
+  }, []);
+
+  const handleNext = () => setStep(prev => prev + 1);
+  const handleBack = () => {
+    if (step === 3 && formData.service === "general") {
+      setStep(1);
+    } else {
+      setStep(prev => prev - 1);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStep(4); // Success step
+  };
+
+  const renderFormContent = () => {
+    switch(step) {
+      case 1:
+        return (
+          <motion.div
+            key="step1"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="space-y-6"
+          >
+            <div className="mb-8">
+              <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-xs mb-2 block">Step 1 of 3</span>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white">What do you need help with?</h3>
+              <p className="text-slate-500 mt-2">Select the primary area you're looking for assistance with.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {services.map((service) => (
+                <button
+                  key={service.id}
+                  type="button"
+                  onClick={() => {
+                    setFormData({ ...formData, service: service.id, subIntent: "" });
+                    handleNext();
+                  }}
+                  className={cn(
+                    "flex flex-col items-center text-center p-6 rounded-3xl border-2 transition-all hover:-translate-y-1 active:scale-95",
+                    formData.service === service.id 
+                      ? `border-blue-500 bg-blue-50 dark:bg-blue-900/20` 
+                      : `border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-blue-300 dark:hover:border-blue-700`
+                  )}
+                >
+                  <div className={cn("w-12 h-12 rounded-full flex items-center justify-center mb-4", service.bg, service.color)}>
+                    <service.icon size={24} />
+                  </div>
+                  <span className="font-bold text-slate-900 dark:text-white text-sm">{service.label}</span>
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={() => {
+                  setFormData({ ...formData, service: "general", subIntent: "general" });
+                  setStep(3);
+                }}
+                className={cn(
+                  "sm:col-span-2 flex items-center justify-center gap-3 p-5 rounded-2xl border-2 transition-all hover:-translate-y-1 active:scale-95",
+                  formData.service === "general" 
+                    ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20" 
+                    : "border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-blue-300 dark:hover:border-blue-700"
+                )}
+              >
+                <MessageSquare size={20} className="text-slate-500" />
+                <span className="font-bold text-slate-900 dark:text-white text-sm">General Inquiry / Something Else</span>
+              </button>
+            </div>
+          </motion.div>
+        );
+      
+      case 2:
+        const options = subQuestions[formData.service as keyof typeof subQuestions] || [];
+        return (
+          <motion.div
+            key="step2"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="space-y-6"
+          >
+            <div className="mb-8">
+              <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-xs mb-2 block">Step 2 of 3</span>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white">Could you be more specific?</h3>
+              <p className="text-slate-500 mt-2">This helps us route your inquiry to the right expert.</p>
+            </div>
+            
+            <div className="space-y-3">
+              {options.map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => {
+                    setFormData({ ...formData, subIntent: option.id });
+                    handleNext();
+                  }}
+                  className={cn(
+                    "w-full flex items-center justify-between p-5 rounded-2xl border-2 transition-all text-left group hover:-translate-y-0.5",
+                    formData.subIntent === option.id 
+                      ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20" 
+                      : "border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-blue-300 dark:hover:border-blue-700"
+                  )}
+                >
+                  <span className="font-bold text-slate-900 dark:text-white">{option.label}</span>
+                  <div className={cn(
+                    "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors",
+                    formData.subIntent === option.id ? "border-blue-500 bg-blue-500" : "border-slate-300 dark:border-slate-600 group-hover:border-blue-400"
+                  )}>
+                    {formData.subIntent === option.id && <div className="w-2.5 h-2.5 rounded-full bg-white" />}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <div className="pt-6">
+              <button 
+                type="button" 
+                onClick={handleBack}
+                className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <ArrowLeft size={16} /> Back
+              </button>
+            </div>
+          </motion.div>
+        );
+
+      case 3:
+        return (
+          <motion.div
+            key="step3"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="space-y-6"
+          >
+            <div className="mb-8">
+              <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-xs mb-2 block">Step 3 of 3</span>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white">Great! How can we reach you?</h3>
+              <p className="text-slate-500 mt-2">Almost done. Just a few details so we can get in touch.</p>
+            </div>
+
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">First Name</label>
+                  <input required type="text" placeholder="John" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Last Name</label>
+                  <input required type="text" placeholder="Doe" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
+                </div>
+              </div>
+              <div className="space-y-3">
+                <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Email Address</label>
+                <input required type="email" placeholder="john@example.com" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Additional Notes (Optional)</label>
+                <textarea rows={3} placeholder="Any specific requirements?" className="w-full p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all resize-none" />
+              </div>
+            </div>
+
+            <div className="pt-6 flex items-center justify-between">
+              <button 
+                type="button" 
+                onClick={handleBack}
+                className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <ArrowLeft size={16} /> Back
+              </button>
+              
+              <button 
+                type="submit"
+                className="h-14 px-8 bg-blue-600 text-white rounded-2xl text-sm font-black shadow-xl hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center gap-2"
+              >
+                Send Request
+                <Send size={16} className="translate-y-[1px]" />
+              </button>
+            </div>
+          </motion.div>
+        );
+
+      case 4:
+        return (
+          <motion.div
+            key="step4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex flex-col items-center text-center py-12"
+          >
+            <div className="w-24 h-24 bg-green-100 dark:bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-8">
+              <CheckCircle2 size={48} />
+            </div>
+            <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Request Sent Successfully!</h3>
+            <p className="text-slate-500 leading-relaxed max-w-md mx-auto mb-10">
+              Thank you for reaching out. One of our experts will review your request and get back to you within 24 hours.
+            </p>
+            <button 
+              type="button" 
+              onClick={() => {
+                setStep(1);
+                setFormData({ service: "", subIntent: "", firstName: "", lastName: "", email: "", message: "" });
+              }}
+              className="h-14 px-8 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-2xl text-sm font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:scale-95"
+            >
+              Start New Request
+            </button>
+          </motion.div>
+        );
+    }
+  };
+
   return (
     <section id="contact" className="py-32 bg-slate-50 dark:bg-slate-900/30 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-12">
             <div className="space-y-6">
               <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-sm">Get in Touch</p>
@@ -24,9 +291,9 @@ export function Contact() {
 
             <div className="space-y-8">
               {[
-                { icon: Mail, label: "Email Us", value: "contact@bemagholding.com", color: "text-blue-600", bgColor: "bg-blue-100" },
-                { icon: Phone, label: "Call Us", value: "+254 700 000 000", color: "text-teal-600", bgColor: "bg-teal-100" },
-                { icon: MapPin, label: "Location", value: "Nairobi, Kenya", color: "text-slate-900", bgColor: "bg-slate-200" }
+                { icon: Mail, label: "Email Us", value: "contact@bemagholding.com", color: "text-blue-600", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
+                { icon: Phone, label: "Call Us", value: "+254 700 000 000", color: "text-teal-600", bgColor: "bg-teal-100 dark:bg-teal-900/30" },
+                { icon: MapPin, label: "Location", value: "Nairobi, Kenya", color: "text-slate-900 dark:text-white", bgColor: "bg-slate-200 dark:bg-slate-800" }
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-6 group">
                   <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110", item.bgColor, item.color)}>
@@ -39,14 +306,6 @@ export function Contact() {
                 </div>
               ))}
             </div>
-
-            <div className="flex gap-4 pt-4">
-              {[Globe, MessageSquare, ExternalLink, Share2].map((Icon, i) => (
-                <a key={i} href="#" className="w-12 h-12 rounded-xl border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:border-slate-900 dark:hover:border-white hover:text-slate-900 dark:hover:text-white transition-all">
-                  <Icon size={20} />
-                </a>
-              ))}
-            </div>
           </div>
 
           <motion.div
@@ -54,40 +313,12 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-slate-900 rounded-[60px] p-10 lg:p-16 shadow-2xl border border-slate-100 dark:border-slate-800"
+            className="bg-white dark:bg-slate-900 rounded-[40px] md:rounded-[60px] p-8 md:p-12 shadow-2xl border border-slate-100 dark:border-slate-800 min-h-[500px]"
           >
-            <form 
-              className="space-y-8"
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Thank you! Your message has been sent successfully.");
-              }}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest ml-1">First Name</label>
-                  <input required type="text" placeholder="John" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest ml-1">Last Name</label>
-                  <input required type="text" placeholder="Doe" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
-                </div>
-              </div>
-              <div className="space-y-3">
-                <label className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest ml-1">Email Address</label>
-                <input required type="email" placeholder="john@example.com" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
-              </div>
-              <div className="space-y-3">
-                <label className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest ml-1">Your Message</label>
-                <textarea required rows={4} placeholder="How can we help you?" className="w-full p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-[32px] focus:ring-4 focus:ring-blue-500/10 outline-none transition-all resize-none" />
-              </div>
-              <button 
-                type="submit"
-                className="w-full h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[28px] text-lg font-black shadow-xl hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center gap-3 group"
-              >
-                Send Message
-                <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
+            <form onSubmit={handleSubmit} className="h-full flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                {renderFormContent()}
+              </AnimatePresence>
             </form>
           </motion.div>
         </div>

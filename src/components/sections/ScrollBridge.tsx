@@ -41,9 +41,9 @@ export function ScrollBridge() {
         {/* Gradient for the Bridge */}
         <defs>
           <linearGradient id="bridge-gradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#2563eb" />
-            <stop offset="50%" stopColor="#14b8a6" />
-            <stop offset="100%" stopColor="#2563eb" />
+            <stop offset="0%" stopColor="#204570" />
+            <stop offset="50%" stopColor="#009975" />
+            <stop offset="100%" stopColor="#204570" />
           </linearGradient>
         </defs>
 

@@ -2,16 +2,45 @@
 
 @theme {
   --font-sans: var(--font-inter);
+  
+  /* BEMAG Deep Blue Palette */
+  --color-blue-50: #f0f4f8;
+  --color-blue-100: #d9e4ef;
+  --color-blue-400: #5a82ad;
+  --color-blue-500: #396492;
+  --color-blue-600: #204570;
+  --color-blue-700: #193658;
+  --color-blue-900: #102137;
+  --color-blue-950: #0a1523;
+
+  /* BEMAG Greenish Teal Palette */
+  --color-teal-50: #e0f4ef;
+  --color-teal-100: #b3e5d7;
+  --color-teal-500: #009975;
+  --color-teal-600: #007a5e;
+  --color-teal-900: #003327;
+
+  /* BEMAG Dark Navy for Slate Darks */
+  --color-slate-800: #0a3a70;
+  --color-slate-900: #002b5b;
+  --color-slate-950: #001633;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: var(--color-slate-900);
+}
+
+.dark {
+  --background: var(--color-slate-950);
+  --foreground: #f8fafc;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020617;
+  :root:not(.light) {
+    --background: var(--color-slate-950);
     --foreground: #f8fafc;
   }
 }

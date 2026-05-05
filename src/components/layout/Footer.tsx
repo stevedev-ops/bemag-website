@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Globe } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -11,8 +11,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-slate-900 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-slate-900 shadow-xl transition-transform group-hover:scale-110">
-                <Globe className="w-6 h-6" />
+              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-xl transition-transform group-hover:scale-110 overflow-hidden">
+                <Image src="/bemag-logo.png" alt="BEMAG Logo" width={40} height={40} className="object-cover w-full h-full" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
