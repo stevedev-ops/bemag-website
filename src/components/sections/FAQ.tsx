@@ -53,7 +53,7 @@ export function FAQ() {
                 </div>
                 <div>
                   <p className="text-sm font-black text-slate-900 dark:text-white">Still have questions?</p>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Email: support@bemag.com</p>
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Email: bemagholdingltd@gmail.com</p>
                 </div>
               </div>
             </div>

@@ -41,13 +41,14 @@ const subQuestions = {
 
 export function Contact() {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    service: "",
-    subIntent: "",
     firstName: "",
     lastName: "",
     email: "",
-    message: ""
+    message: "",
+    service: "",
+    subIntent: ""
   });
 
   useEffect(() => {
@@ -68,9 +69,43 @@ export function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStep(4); // Success step
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "9db42567-e378-407b-83c9-82d15d32868b", 
+          subject: `New Inquiry from BEMAG: ${formData.service}`,
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          message: `
+            Service: ${formData.service}
+            Interest: ${formData.subIntent}
+            Message: ${formData.message}
+          `,
+          to_email: "bemagholdingltd@gmail.com"
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStep(4);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Submission failed. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const renderFormContent = () => {
@@ -206,20 +241,51 @@ export function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">First Name</label>
-                  <input required type="text" placeholder="John" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
+                  <input 
+                    required 
+                    name="firstName"
+                    type="text" 
+                    placeholder="John" 
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                    className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" 
+                  />
                 </div>
                 <div className="space-y-3">
                   <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Last Name</label>
-                  <input required type="text" placeholder="Doe" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
+                  <input 
+                    required 
+                    name="lastName"
+                    type="text" 
+                    placeholder="Doe" 
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                    className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" 
+                  />
                 </div>
               </div>
               <div className="space-y-3">
                 <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Email Address</label>
-                <input required type="email" placeholder="john@example.com" className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" />
+                <input 
+                  required 
+                  name="email"
+                  type="email" 
+                  placeholder="john@example.com" 
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full h-14 px-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all" 
+                />
               </div>
               <div className="space-y-3">
                 <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Additional Notes (Optional)</label>
-                <textarea rows={3} placeholder="Any specific requirements?" className="w-full p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all resize-none" />
+                <textarea 
+                  name="message"
+                  rows={3} 
+                  placeholder="Any specific requirements?" 
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl focus:ring-4 focus:ring-blue-500/10 outline-none transition-all resize-none" 
+                />
               </div>
             </div>
 
@@ -234,10 +300,14 @@ export function Contact() {
               
               <button 
                 type="submit"
-                className="h-14 px-8 bg-blue-600 text-white rounded-2xl text-sm font-black shadow-xl hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className={cn(
+                  "h-14 px-8 bg-blue-600 text-white rounded-2xl text-sm font-black shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2",
+                  isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:-translate-y-1"
+                )}
               >
-                Send Request
-                <Send size={16} className="translate-y-[1px]" />
+                {isSubmitting ? "Sending..." : "Send Request"}
+                <Send size={16} className={cn("translate-y-[1px]", isSubmitting && "animate-pulse")} />
               </button>
             </div>
           </motion.div>
@@ -291,8 +361,8 @@ export function Contact() {
 
             <div className="space-y-8">
               {[
-                { icon: Mail, label: "Email Us", value: "contact@bemagholdingsltd.com", color: "text-blue-600", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
-                { icon: Phone, label: "Call Us", value: "+254 700 000 000", color: "text-teal-600", bgColor: "bg-teal-100 dark:bg-teal-900/30" },
+                { icon: Mail, label: "Email Us", value: "bemagholdingltd@gmail.com", color: "text-blue-600", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
+                { icon: Phone, label: "Call Us", value: "+254115598150", color: "text-teal-600", bgColor: "bg-teal-100 dark:bg-teal-900/30" },
                 { icon: MapPin, label: "Location", value: "Nairobi, Kenya", color: "text-slate-900 dark:text-white", bgColor: "bg-slate-200 dark:bg-slate-800" }
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-6 group">
