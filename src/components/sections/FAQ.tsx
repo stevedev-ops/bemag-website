@@ -11,8 +11,8 @@ const faqs = [
     answer: "Typically, local business registration takes between 7 to 14 working days, depending on the structure (Sole Proprietorship vs. Limited Company). We handle all the paperwork and government portal submissions to ensure no delays."
   },
   {
-    question: "What is required for Schengen visa facilitation?",
-    answer: "Requirements usually include a valid passport, travel insurance, proof of accommodation, and financial statements. BEMAG provides a customized checklist and handles the documentation review to ensure a 100% compliant application."
+    question: "How does Schengen visa facilitation work?",
+    answer: "We facilitate both tourist and work visas for the Schengen area. Our mission is to ensure you can travel and at the same time work abroad safely with us. We handle all the complex documentation and review to ensure your application is 100% compliant."
   },
   {
     question: "How does BEMAG ensure 100% legal compliance?",

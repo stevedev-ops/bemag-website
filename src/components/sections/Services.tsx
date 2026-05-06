@@ -69,8 +69,8 @@ const services = [
   {
     id: "tours",
     title: "Tours & Travel",
-    description: "Personalized travel itinerary planning and facilitation for Schengen, tour, and work visas.",
-    longDescription: "Our Tours & Travel Consulting is built for the global entrepreneur. We specialize in complex travel logistics, including personalized itinerary planning for business scouting and dedicated facilitation for Schengen, tour, and work visas. We bridge the gap between where you are and where you need to be, globally.",
+    description: "Personalized travel itinerary planning and Schengen visa facilitation for tourist and work visas. Travel and work abroad with us.",
+    longDescription: "Our Tours & Travel Consulting is built for the global entrepreneur. We specialize in personalized travel itinerary planning and Schengen visa facilitation for both tourist and work visas. With BEMAG, you can travel and at the same time work abroad safely. We bridge the gap between where you are and where you need to be, globally.",
     icon: Plane,
     color: "bg-orange-500",
     features: [
