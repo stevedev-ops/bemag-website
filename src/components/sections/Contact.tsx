@@ -9,7 +9,7 @@ const services = [
   { id: "consultancy", label: "Business Consultancy", icon: Briefcase, color: "text-blue-500", bg: "bg-blue-100 dark:bg-blue-500/10", border: "border-blue-200 dark:border-blue-500/20" },
   { id: "relations", label: "Customer Relations", icon: Users, color: "text-teal-500", bg: "bg-teal-100 dark:bg-teal-500/10", border: "border-teal-200 dark:border-teal-500/20" },
   { id: "compliance", label: "Documentation & Compliance", icon: FileCheck, color: "text-slate-700 dark:text-slate-300", bg: "bg-slate-200 dark:bg-slate-700/30", border: "border-slate-300 dark:border-slate-600" },
-  { id: "visas", label: "Tours & Visas", icon: Plane, color: "text-orange-500", bg: "bg-orange-100 dark:bg-orange-500/10", border: "border-orange-200 dark:border-orange-500/20" }
+  { id: "tours", label: "Tours & Visas", icon: Plane, color: "text-orange-500", bg: "bg-orange-100 dark:bg-orange-500/10", border: "border-orange-200 dark:border-orange-500/20" }
 ];
 
 const subQuestions = {
@@ -31,7 +31,7 @@ const subQuestions = {
     { id: "renewal", label: "Document & permit renewals" },
     { id: "other", label: "Other / General Inquiry" }
   ],
-  visas: [
+  tours: [
     { id: "corporate", label: "Corporate travel & logistics" },
     { id: "personal", label: "Personal Schengen/Tour visa" },
     { id: "work", label: "Work visa facilitation" },

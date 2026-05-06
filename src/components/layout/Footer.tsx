@@ -31,10 +31,15 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-slate-900 dark:text-white font-black uppercase tracking-widest text-xs">Services</h4>
             <ul className="space-y-4">
-              {["Business Consultancy", "Customer Relations", "Case Studies", "Tours & Travel"].map((item) => (
-                <li key={item}>
-                  <Link href={item === "Case Studies" ? "#case-studies" : "#services"} className="text-slate-500 hover:text-slate-900 dark:hover:text-white text-sm font-bold transition-colors">
-                    {item}
+              {[
+                { name: "Business Consultancy", href: "#services" },
+                { name: "Customer Relations", href: "#services" },
+                { name: "Documentation & Compliance", href: "#services" },
+                { name: "Tours & Travel", href: "#services" }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-slate-500 hover:text-slate-900 dark:hover:text-white text-sm font-bold transition-colors">
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -44,10 +49,16 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-slate-900 dark:text-white font-black uppercase tracking-widest text-xs">Company</h4>
             <ul className="space-y-4">
-              {["About Us", "Mission", "Process", "FAQ", "Contact"].map((item) => (
-                <li key={item}>
-                  <Link href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-slate-500 hover:text-slate-900 dark:hover:text-white text-sm font-bold transition-colors">
-                    {item}
+              {[
+                { name: "About Us", href: "#mission" },
+                { name: "Process", href: "#process" },
+                { name: "Case Studies", href: "#case-studies" },
+                { name: "FAQ", href: "#faq" },
+                { name: "Contact", href: "#contact" }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-slate-500 hover:text-slate-900 dark:hover:text-white text-sm font-bold transition-colors">
+                    {item.name}
                   </Link>
                 </li>
               ))}
