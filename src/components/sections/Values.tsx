@@ -38,7 +38,7 @@ const values = [
 
 export function Values() {
   return (
-    <section id="about" className="py-32 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden">
+    <section id="values" className="py-32 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent" />
       
       <div className="max-w-7xl mx-auto px-6">
@@ -55,11 +55,12 @@ export function Values() {
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" 
                 alt="BEMAG Team" 
                 className="w-full h-[700px] object-cover hover:scale-105 transition-transform duration-1000"
+                /* eslint-disable-next-line @next/next/no-img-element */
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
               <div className="absolute bottom-12 left-12 right-12 p-10 bg-white/10 backdrop-blur-xl rounded-[40px] border border-white/20">
                 <p className="text-white text-2xl font-medium leading-relaxed italic">
-                  "Linking businesses to limitless opportunities through strategic planning, compliance, and customer-oriented solutions."
+                  &quot;Linking businesses to limitless opportunities through strategic planning, compliance, and customer-oriented solutions.&quot;
                 </p>
                 <div className="mt-8 flex items-center gap-4">
                   <div className="h-px flex-1 bg-white/30" />

@@ -4,8 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight, Play } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Play, ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (

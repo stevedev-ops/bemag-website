@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Globe, Share2, ExternalLink, MessageSquare, Briefcase, Users, FileCheck, Plane, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, Briefcase, Users, FileCheck, Plane, CheckCircle2, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const services = [
@@ -52,8 +52,8 @@ export function Contact() {
   });
 
   useEffect(() => {
-    const handlePreselect = (e: any) => {
-      setFormData(prev => ({ ...prev, service: e.detail }));
+    const handlePreselect = (e: Event & { detail?: string }) => {
+      setFormData(prev => ({ ...prev, service: e.detail || "" }));
       setStep(2);
     };
     window.addEventListener('preselectService', handlePreselect);
@@ -122,7 +122,7 @@ export function Contact() {
             <div className="mb-8">
               <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-xs mb-2 block">Step 1 of 3</span>
               <h3 className="text-3xl font-black text-slate-900 dark:text-white">What do you need help with?</h3>
-              <p className="text-slate-500 mt-2">Select the primary area you're looking for assistance with.</p>
+              <p className="text-slate-500 mt-2">Select the primary area you&apos;re looking for assistance with.</p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -351,7 +351,7 @@ export function Contact() {
             <div className="space-y-6">
               <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-sm">Get in Touch</p>
               <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
-                Let's Bridge the Gap <br />
+                Let&apos;s Bridge the Gap <br />
                 <span className="text-slate-400">Together.</span>
               </h2>
               <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">

@@ -88,10 +88,10 @@ export function CaseStudies() {
                 </div>
               </div>
 
-              <button className="mt-10 w-full py-5 bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 rounded-3xl text-sm font-black text-slate-900 dark:text-white flex items-center justify-center gap-2 hover:!bg-slate-900 dark:hover:!bg-white hover:!text-white dark:hover:!text-slate-900 transition-all group/btn">
+              <a href="#contact" className="mt-10 w-full py-5 bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 rounded-3xl text-sm font-black text-slate-900 dark:text-white flex items-center justify-center gap-2 hover:!bg-slate-900 dark:hover:!bg-white hover:!text-white dark:hover:!text-slate-900 transition-all group/btn">
                 Read Full Story
                 <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </motion.div>
           ))}
         </div>

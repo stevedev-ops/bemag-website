@@ -44,7 +44,7 @@ export function FAQ() {
               </h2>
             </div>
             <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
-              Can't find the answer you're looking for? Reach out to our expert consultants for a personalized session.
+              Can&apos;t find the answer you&apos;re looking for? Reach out to our expert consultants for a personalized session.
             </p>
             <div className="pt-8">
               <div className="inline-flex items-center gap-4 p-6 bg-slate-50 dark:bg-slate-900 rounded-[32px] border border-slate-100 dark:border-slate-800">

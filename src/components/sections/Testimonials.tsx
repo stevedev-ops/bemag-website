@@ -95,7 +95,7 @@ export function Testimonials() {
                 </div>
 
                 <p className="text-2xl md:text-3xl font-bold text-slate-200 leading-relaxed mb-10 max-w-3xl">
-                  "{testimonials[currentIndex].quote}"
+                  &quot;{testimonials[currentIndex].quote}&quot;
                 </p>
 
                 <div>
